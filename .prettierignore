@@ -1,0 +1,11 @@
+.git
+.github
+.gitignore
+.gitattributes
+.vscode
+.history
+
+node_modules
+
+tests/
+
