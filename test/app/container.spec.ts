@@ -3,7 +3,7 @@ import AppContainer from '../../src/app';
 import { Application } from '../../src/app/application';
 import { MongodbDriver } from 'src/infra/mongo/driver';
 import { HttpServer } from '../../src/interfaces/http/server';
-import {RedisDriver} from '../../src/infra/redis/driver';
+import { RedisDriver } from '../../src/infra/redis/driver';
 describe('Application container', () => {
   it('Should load database container', () => {
     const db = AppContainer.resolve<MongodbDriver>('mongoDB');
