@@ -7,16 +7,18 @@ export class MongodbDriver implements Database {
   constructor({ config }) {
     const options: MongoDriverOptions = config.mongodb;
     if (options.auth) {
-      this.url = `mongodb://${options.address}${options.user}:$${options.password}@${options.address}:${options.port}/${options.database}`;
+      this.url = `mongodb://${options.host}${options.user}:$${options.password}@${options.host}:${options.port}/${options.database}`;
     }
-    this.url = `mongodb://${options.address}:${options.port}/${options.database}`;
+    this.url = `mongodb://${options.host}:${options.port}/${options.database}`;
+    console.log(this.url);
   }
 
-  async connect(): Promise<void> {
-    // try {
-    //   await mongoose.connect(this.url);
-    // } catch (e) {
-    //   throw new Error(e);
-    // }
-  }
+  connect = async (): Promise<void> => {
+    try {
+      await mongoose.connect(this.url);
+      console.log('Connected to mongodb');
+    } catch (e) {
+      throw new Error(e);
+    }
+  };
 }

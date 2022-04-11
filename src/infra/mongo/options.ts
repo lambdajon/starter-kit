@@ -4,5 +4,5 @@ export type MongoDriverOptions = {
   user: string | undefined;
   password: string | undefined;
   database: string;
-  address: string;
+  host: string;
 };
