@@ -6,7 +6,7 @@ export class Application {
     this.httpServer = httpServer;
   }
 
-  start() {
+  start = () => {
     return Promise.resolve().then(this.mongoDB.connect).then(this.httpServer.start);
-  }
+  };
 }
