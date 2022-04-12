@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { User } from '../../../domain/entities/User';
+import { User } from '../../../domain/entities/user/User';
 
 const userSchema = new Schema<User>(
   {
