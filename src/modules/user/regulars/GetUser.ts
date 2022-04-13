@@ -16,8 +16,8 @@ export class GetUser extends HttpRegular {
   async actImpl(req: DecodedRequest, res: Response) {
     try {
       const take = new Take<VO.GetUser>(req);
-      const newUser = take.body();
-      const result = await this.useCase.act(newUser);
+      const user = take.body();
+      const result = await this.useCase.act(user);
       this.ok(res, result);
     } catch (e) {
       console.log(e);
