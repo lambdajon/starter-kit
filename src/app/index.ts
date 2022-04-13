@@ -1,4 +1,4 @@
-import { createContainer, asClass, InjectionMode, asValue, asFunction } from 'awilix';
+import { createContainer, asClass, InjectionMode, asValue } from 'awilix';
 import Config from '../config';
 import { AwlixContainer } from '../core/InjectableDependancies';
 import { MongodbDriver } from '../infra/mongo/driver';

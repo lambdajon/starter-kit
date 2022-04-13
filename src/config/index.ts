@@ -23,10 +23,10 @@ const configuration: ConfigurationOptions = {
   redis: {
     auth: process.env.REDIS_USER && process.env.REDIS_PASSWORD && process.env.REDIS_DATABASE ? true : false,
     user: process.env.REDIS_USER,
-    port: +process.env.REDIS_PORT,
-    database: process.env.REDIS_DATABASE,
+    port: +process.env.REDIS_PORT || 6379,
+    database: process.env.REDIS_DATABASE || 'app',
     password: process.env.REDIS_PASSWORD,
-    host: process.env.REDIS_HOST
+    host: process.env.REDIS_HOST || '127.0.0.1'
   }
 };
 export default configuration;

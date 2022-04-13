@@ -10,7 +10,6 @@ export class MongodbDriver implements Database {
       this.url = `mongodb://${options.host}${options.user}:$${options.password}@${options.host}:${options.port}/${options.database}`;
     }
     this.url = `mongodb://${options.host}:${options.port}/${options.database}`;
-    console.log(this.url);
   }
 
   connect = async (): Promise<void> => {
