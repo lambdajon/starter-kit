@@ -1,8 +1,8 @@
 import { Database } from '../../core/Drivers';
-import { MongoDriverOptions } from './options';
-
+import { Application } from '../../core/InjectableDependancies';
 declare class MongoDriver implements Database {
-  constructor(options: MongoDriverOptions);
+  private url: string;
+  constructor(options: Application);
   connect(): Promise<void>;
 }
 

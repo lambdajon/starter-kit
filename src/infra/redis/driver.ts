@@ -1,23 +1,29 @@
-import { createClient, RedisClientType } from 'redis';
+import { createClient, RedisClientType, RedisClientOptions } from 'redis';
 import { Database } from '../../core/Drivers';
 import { RedisOptions } from './options';
 
 export class RedisDriver implements Database {
+  private options: RedisClientOptions = {};
   private client: RedisClientType;
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  constructor(options: RedisOptions) {
-    this.client = createClient();
+  constructor({ config }) {
+    const options: RedisOptions = config.redis;
+    // redis[s]://[[username][:password]@][host][:port]
+    if (options.host) {
+      this.options.url = `redis://${options.host}:${options.port}`;
+    }
   }
 
-  async connect(): Promise<void> {
-    this.client.on('error', (e) => {
-      console.log(e);
-    });
+  connect = async (): Promise<void> => {
+    this.client = createClient(this.options);
     try {
       await this.client.connect();
+      console.log('Redis Server connected');
     } catch (e) {
       throw new Error(e);
     }
+  };
+
+  connection(): RedisClientType {
+    return this.client;
   }
 }

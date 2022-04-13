@@ -1,5 +1,6 @@
 interface Database {
-  connect(): Promise<void>;
+  connect(): Promise<void> | void;
+  connection?();
 }
 
 export { Database };

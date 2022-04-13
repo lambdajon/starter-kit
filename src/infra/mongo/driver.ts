@@ -4,18 +4,20 @@ import { Database } from '../../core/Drivers';
 
 export class MongodbDriver implements Database {
   private url: string;
-  constructor(options: MongoDriverOptions) {
+  constructor({ config }) {
+    const options: MongoDriverOptions = config.mongodb;
     if (options.auth) {
-      this.url = `mongodb://${options.address}${options.user}:$${options.password}@${options.address}:${options.port}/${options.database}`;
+      this.url = `mongodb://${options.host}${options.user}:$${options.password}@${options.host}:${options.port}/${options.database}`;
     }
-    this.url = `mongodb://${options.address}:${options.port}/${options.database}`;
+    this.url = `mongodb://${options.host}:${options.port}/${options.database}`;
   }
 
-  async connect(): Promise<void> {
+  connect = async (): Promise<void> => {
     try {
       await mongoose.connect(this.url);
+      console.log('Connected to mongodb');
     } catch (e) {
       throw new Error(e);
     }
-  }
+  };
 }
