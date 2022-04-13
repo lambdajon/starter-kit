@@ -1,6 +1,6 @@
 import { HttpRouting } from '../../../../core/ExpressHttpRouting';
 import { CreateUser } from '../../regulars/CreateUser';
-import {UpdateUser} from "../../regulars/UpdateUser";
+import { UpdateUser } from '../../regulars/UpdateUser';
 export default class UserRouting extends HttpRouting {
   constructor(path = '/users') {
     super(path);
