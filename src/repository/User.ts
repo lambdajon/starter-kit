@@ -4,4 +4,7 @@ export class UserRepository {
   create(dataSource) {
     return User.create(dataSource);
   }
+  getUser(dataSource) {
+    return User.findOne(dataSource)
+  }
 }
