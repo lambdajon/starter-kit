@@ -17,12 +17,13 @@ export class RedisDriver implements Database {
     this.client = createClient(this.options);
     try {
       await this.client.connect();
+      console.log('Redis Server connected');
     } catch (e) {
       throw new Error(e);
     }
   };
 
-  connection = (): RedisClientType => {
+  connection(): RedisClientType {
     return this.client;
-  };
+  }
 }

@@ -12,7 +12,7 @@ const container = createContainer<AwlixContainer>({
 
 export default container.register({
   mongoDB: asClass(MongodbDriver),
-  redis: asClass(RedisDriver),
+  redis: asClass(RedisDriver).singleton(),
   httpServer: asClass(HttpServer).singleton(),
   application: asClass(Application),
   config: asValue(Config)
