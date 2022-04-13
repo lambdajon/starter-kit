@@ -3,7 +3,7 @@ import { CreateUser } from '../domain/vobjects';
 import { User } from '../../../domain/entities/user/User';
 import { UserRepository } from '../../../repository/User';
 
-export class UserCreate implements UseCase<CreateUser, User> {
+export class UserCreate implements UseCase<CreateUser, User, any> {
   private userRepository: UserRepository;
 
   constructor({ userRepository }) {
