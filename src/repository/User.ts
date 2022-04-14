@@ -9,4 +9,8 @@ export class UserRepository {
   update(userId, dataSource) {
     return User.findByIdAndUpdate(userId, dataSource);
   }
+
+  getUserById(userId) {
+    return User.findById(userId);
+  }
 }

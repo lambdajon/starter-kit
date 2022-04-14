@@ -13,3 +13,7 @@ export type UpdateUser = {
   email: string;
   phoneNumber: string;
 };
+
+export type GetUser = {
+  user_id: string;
+};
