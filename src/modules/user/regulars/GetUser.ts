@@ -17,7 +17,7 @@ export class GetUser extends HttpRegular {
   }
   async actImpl(req: DecodedRequest, res: Response) {
     try {
-      const take = new Take<VO.UpdateUser>(req);
+      const take = new Take<VO.GetUser>(req);
       const param = take.params();
       const validator = new HttpRequestValidator({ params: param }, getUserSchama);
       const isValid = await validator.validate();
