@@ -4,4 +4,5 @@ export type CreateUser = {
   email: string;
   phoneNumber: string;
   verify: boolean;
+  password: string;
 };

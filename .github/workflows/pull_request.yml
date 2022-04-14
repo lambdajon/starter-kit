@@ -1,0 +1,55 @@
+name: Linting, Testing and Auto-merge
+
+on: pull_request_target
+
+env:
+  CI: true
+
+jobs:
+  lint_test_build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-20.04]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: yarn --frozen-lockfile
+
+      - name: Lint code
+        run: yarn lint
+
+      - name: Test code
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+  auto-merge:
+    needs: lint_test_build
+    timeout-minutes: 5
+
+    runs-on: ubuntu-20.04
+    if: github.actor == 'dependabot[bot]'
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          approve: true
+          github-token: ${{ secrets.GH_TOKEN }}
