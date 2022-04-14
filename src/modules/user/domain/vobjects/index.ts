@@ -6,3 +6,7 @@ export type CreateUser = {
   verify: boolean;
   password: string;
 };
+
+export type GetUser = {
+  phoneNumber: string;
+}
