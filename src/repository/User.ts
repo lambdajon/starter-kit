@@ -7,7 +7,7 @@ export class UserRepository {
     return record;
   }
   update(userId, dataSource) {
-    return User.findByIdAndUpdate(userId, dataSource);
+    return User.findByIdAndUpdate(userId, dataSource, { new: true });
   }
 
   getUserById(userId) {
