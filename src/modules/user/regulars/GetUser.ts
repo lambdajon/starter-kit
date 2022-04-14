@@ -27,7 +27,7 @@ export class GetUser extends HttpRegular {
       }
       const result = await this.useCase.act(param['id']);
       if (!result) {
-        this.notFound(res, 'User not found');
+        return this.notFound(res, 'User not found');
       }
       this.ok(res, result);
     } catch (e) {
