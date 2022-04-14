@@ -5,6 +5,8 @@ import { UserRepository } from '../../../repository/User';
 import { UserUpdate } from '../useCases/UserUpdate';
 import { Take } from '../../../interfaces/http/Take';
 import * as VO from '../domain/vobjects';
+import { HttpRequestValidator } from '../../../shared/validators/HttpRequestValidator';
+import { updateUserSchama } from '../interface/http/validation';
 
 export class UpdateUser extends HttpRegular {
   private useCase: UserUpdate;
@@ -18,8 +20,15 @@ export class UpdateUser extends HttpRegular {
       const take = new Take<VO.UpdateUser>(req);
       const userId = take.params('id');
       const updatedUser = take.body();
+      const validator = new HttpRequestValidator({ body: updatedUser, params: userId }, updateUserSchama);
+      const isValid = await validator.validate();
+      if (!isValid) {
+        const validationErrors = await validator.errors();
+        return this.validationError(res, validationErrors);
+      }
+
       const result = await this.useCase.act(updatedUser, userId);
-      this.created(res, result);
+      this.ok(res, result);
     } catch (e) {
       console.log(e);
     }

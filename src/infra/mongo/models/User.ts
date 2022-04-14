@@ -16,6 +16,13 @@ const userSchema = new Schema<User>(
     verify: {
       type: Boolean,
       default: false
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    salt: {
+      type: String
     }
   },
   {

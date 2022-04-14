@@ -2,6 +2,7 @@ import { UseCase } from '../../../core/UseCase';
 import { CreateUser } from '../domain/vobjects';
 import { User } from '../../../domain/entities/user/User';
 import { UserRepository } from '../../../repository/User';
+import UserPassword from '../domain/UserPassword';
 
 export class UserCreate implements UseCase<CreateUser, User, any> {
   private userRepository: UserRepository;
@@ -11,7 +12,12 @@ export class UserCreate implements UseCase<CreateUser, User, any> {
   }
   async act(dataSource: CreateUser): Promise<User> {
     try {
-      const user = await this.userRepository.create(dataSource);
+      const hashedPassword = await UserPassword.hashPassword(dataSource.password);
+      const userWithSecurePassword = {
+        ...dataSource,
+        password: hashedPassword
+      };
+      const user = await this.userRepository.create(userWithSecurePassword);
       return user;
     } catch (e) {
       throw new Error(e);

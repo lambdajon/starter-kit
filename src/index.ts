@@ -1,5 +1,4 @@
 import AppContainer from './app';
-
 const application = AppContainer.cradle.application;
 
 application

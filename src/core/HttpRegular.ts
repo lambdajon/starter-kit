@@ -54,6 +54,12 @@ export abstract class HttpRegular {
       message: error.toString()
     });
   }
+  public validationError(res: Response, error: any) {
+    return res.status(422).json({
+      message: 'Validation error',
+      details: error
+    });
+  }
 }
 
 // TODO: domain ichidagi enumlarni message o'rniga o'zgartirish kere

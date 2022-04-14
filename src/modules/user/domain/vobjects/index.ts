@@ -4,6 +4,7 @@ export type CreateUser = {
   email: string;
   phoneNumber: string;
   verify: boolean;
+  password: string;
 };
 
 export type UpdateUser = {
@@ -11,7 +12,4 @@ export type UpdateUser = {
   lastName: string;
   email: string;
   phoneNumber: string;
-  verify: boolean;
 };
-
-
