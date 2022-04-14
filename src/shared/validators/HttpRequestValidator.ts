@@ -47,6 +47,7 @@ export class HttpRequestValidator<P, Q, B> {
         this.errorsItems = [...this.errorsItems, ...error.details];
       }
     }
+    return this.errorsItems.length === 0;
   }
   async errors() {
     return this.errors;
