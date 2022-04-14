@@ -13,4 +13,8 @@ export class UserRepository {
   getUserById(userId) {
     return User.findById(userId);
   }
+
+  deleteUserById(userId) {
+    return User.findByIdAndRemove(userId);
+  }
 }

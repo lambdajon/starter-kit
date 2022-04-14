@@ -32,4 +32,12 @@ const getUserSchama = {
   })
 };
 
-export { createUserSchama, updateUserSchama, getUserSchama };
+const removeUserSchama = {
+  params: Joi.object({
+    id: Joi.string()
+      .regex(/^[0-9a-fA-F]{24}$/)
+      .required()
+  })
+};
+
+export { createUserSchama, updateUserSchama, getUserSchama, removeUserSchama };

@@ -17,3 +17,7 @@ export type UpdateUser = {
 export type GetUser = {
   user_id: string;
 };
+
+export type RemoveUser = {
+  user_id: string;
+};
