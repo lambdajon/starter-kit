@@ -4,7 +4,7 @@
   "description": "Identification reader service",
   "main": "dist/index.js",
   "scripts": {
-    "build":"rm -rf dist/ && tsc",
+    "build": "rm -rf dist/ && tsc",
     "start:dev": "nodemon",
     "test": "jest",
     "test:watch": "jest --watch",

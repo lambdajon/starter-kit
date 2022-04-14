@@ -10,14 +10,14 @@ export class UserUpdate implements UseCase<UpdateUser, User, any> {
   constructor({ userRepository }) {
     this.userRepository = userRepository;
   }
-  async act(dataSource: UpdateUser): Promise<User> {
+  async act(dataSource: UpdateUser, userId: string): Promise<User> {
     try {
       const hashedPassword = await UserPassword.hashPassword(dataSource.password);
       const userWithSecurePassword = {
         ...dataSource,
         password: hashedPassword
       };
-      const user = await this.userRepository.create(userWithSecurePassword);
+      const user = await this.userRepository.update(userId, userWithSecurePassword);
       return user;
     } catch (e) {
       throw new Error(e);

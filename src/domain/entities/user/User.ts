@@ -10,3 +10,5 @@ export type User = {
   password: string;
   salt: string;
 };
+
+export type Users = User[];

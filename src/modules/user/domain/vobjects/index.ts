@@ -15,3 +15,7 @@ export type UpdateUser = {
   verify: boolean;
   password: string;
 };
+
+export type GetOrDeleteUser = {
+  userId: string;
+};

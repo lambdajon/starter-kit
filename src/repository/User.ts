@@ -7,7 +7,19 @@ export class UserRepository {
     return record;
   }
 
-  update(userId, dataSource) {
-    return User.findByIdAndUpdate(userId, dataSource);
+  async update(userId, dataSource) {
+    return await User.findByIdAndUpdate(userId, dataSource, { new: true });
+  }
+
+  async get(userId) {
+    return await User.findById(userId);
+  }
+
+  async getAll() {
+    return await User.find();
+  }
+
+  async delete(userId) {
+    return await User.findByIdAndDelete(userId);
   }
 }
