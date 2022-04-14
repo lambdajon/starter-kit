@@ -18,16 +18,18 @@ export class UpdateUser extends HttpRegular {
   async actImpl(req: DecodedRequest, res: Response) {
     try {
       const take = new Take<VO.UpdateUser>(req);
-      const userId = take.params('id');
+      const param = take.params();
       const updatedUser = take.body();
-      const validator = new HttpRequestValidator({ body: updatedUser, params: userId }, updateUserSchama);
+      const validator = new HttpRequestValidator({ body: updatedUser, params: param }, updateUserSchama);
       const isValid = await validator.validate();
       if (!isValid) {
         const validationErrors = await validator.errors();
         return this.validationError(res, validationErrors);
       }
-
-      const result = await this.useCase.act(updatedUser, userId);
+      const result = await this.useCase.act(updatedUser, param['id']);
+      if (!result) {
+        this.notFound(res, 'User not found');
+      }
       this.ok(res, result);
     } catch (e) {
       console.log(e);

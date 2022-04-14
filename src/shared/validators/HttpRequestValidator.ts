@@ -32,21 +32,25 @@ export class HttpRequestValidator<P, Q, B> {
     if (this.request.body) {
       const { error } = this.schema.body.validate(this.request.body, { abortEarly: false });
       if (error) {
+        console.log('Bodyda error: ', error);
         this.errorsItems = [...this.errorsItems, ...error.details];
       }
     }
     if (this.request.params) {
       const { error } = this.schema.params.validate(this.request.params, { abortEarly: false });
       if (error) {
+        console.log('Params error: ', error);
         this.errorsItems = [...this.errorsItems, ...error.details];
       }
     }
     if (this.request.query) {
       const { error } = this.schema.query.validate(this.request.query, { abortEarly: false });
       if (error) {
+        console.log('Queryda error: ', error);
         this.errorsItems = [...this.errorsItems, ...error.details];
       }
     }
+    return this.errorsItems.length === 0;
   }
   async errors() {
     return this.errors;
