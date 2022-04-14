@@ -7,4 +7,6 @@ export type User = {
   createdAt: Date;
   updatedAt: Date;
   verify: boolean;
+  password: string;
+  salt: string;
 };
