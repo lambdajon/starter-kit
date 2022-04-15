@@ -29,7 +29,7 @@ export class DeleteUser extends HttpRegular {
       if (!result) {
         return this.notFound(res, 'User not found');
       }
-      this.ok(res, { ...result, message: 'User deleted' });
+      this.ok(res, { user: result, message: 'User deleted' });
     } catch (e) {
       console.log(e);
     }

@@ -14,9 +14,6 @@ export class GetAllUsers extends HttpRegular {
   async actImpl(req: DecodedRequest, res: Response) {
     try {
       const result = await this.useCase.act();
-      if (!result) {
-        return this.notFound(res, 'Users not found');
-      }
       this.ok(res, result);
     } catch (e) {
       console.log(e);

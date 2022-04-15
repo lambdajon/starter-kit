@@ -11,7 +11,7 @@ export class UserGet implements UseCase<GetOrDeleteUser, User, any> {
   }
   async act(userId): Promise<User> {
     try {
-      const user = await this.userRepository.get(userId);
+      const user = await this.userRepository.getById(userId);
       return user;
     } catch (e) {
       throw new Error(e);

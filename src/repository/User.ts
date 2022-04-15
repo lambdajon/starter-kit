@@ -11,7 +11,7 @@ export class UserRepository {
     return await User.findByIdAndUpdate(userId, dataSource, { new: true });
   }
 
-  async get(userId) {
+  async getById(userId) {
     return await User.findById(userId);
   }
 
