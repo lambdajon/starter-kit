@@ -9,5 +9,12 @@ const createUserSchama = {
     password: Joi.string().required()
   })
 };
+const getUserSchemaById = {
+  params: Joi.object({
+    id: Joi.string()
+      .regex(/^[0-9a-fA-F]{24}$/)
+      .required()
+  })
+};
 
-export { createUserSchama };
+export { createUserSchama, getUserSchemaById };

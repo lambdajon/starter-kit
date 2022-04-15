@@ -6,4 +6,8 @@ export class UserRepository {
     record.password = null; // TODO: need refactor this
     return record;
   }
+  async findById(datasource) {
+    const findUser = await User.findById(datasource);
+    return findUser;
+  }
 }
