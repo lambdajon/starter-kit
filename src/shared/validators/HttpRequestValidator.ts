@@ -28,7 +28,7 @@ export class HttpRequestValidator<P, Q, B> {
       this.request.params = requestSection.params;
     }
   }
-  async validate() {
+  async validate(): Promise<any> {
     if (this.request.body) {
       const { error } = this.schema.body.validate(this.request.body, { abortEarly: false });
       if (error) {
