@@ -15,5 +15,5 @@ export type UpdateUser = {
 };
 
 export type GetUser = {
-  user_id: string;
+  id: string;
 };
