@@ -33,20 +33,24 @@ export class HttpRequestValidator<P, Q, B> {
       const { error } = this.schema.body.validate(this.request.body, { abortEarly: false });
       if (error) {
         this.errorsItems = [...this.errorsItems, ...error.details];
+        return
       }
     }
     if (this.request.params) {
       const { error } = this.schema.params.validate(this.request.params, { abortEarly: false });
       if (error) {
         this.errorsItems = [...this.errorsItems, ...error.details];
+        return
       }
     }
     if (this.request.query) {
       const { error } = this.schema.query.validate(this.request.query, { abortEarly: false });
       if (error) {
         this.errorsItems = [...this.errorsItems, ...error.details];
+        return
       }
     }
+    return true
   }
   async errors() {
     return this.errors;
