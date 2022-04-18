@@ -1,11 +1,14 @@
 import { RedisDB } from '../../infra/redis';
+import { MemoryRepository } from '../../core/MemoryRepository';
 
-export class AuthMemRepository {
-  private path = 'auth';
-
+export class AuthMemRepository extends MemoryRepository {
+  constructor() {
+    super();
+    this.hashName = 'authSession';
+  }
   async createAuthSession(data: any) {
     try {
-      return await RedisDB.create(this.path, 'user', data);
+      return await RedisDB.create(this.hashName, this.hashName, data);
     } catch (e) {
       throw new Error(e);
     }

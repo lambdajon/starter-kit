@@ -3,6 +3,5 @@ export type CreateUser = {
   lastName: string;
   email: string;
   phoneNumber: string;
-  verify: boolean;
   password: string;
 };

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { User } from '../../../domain/entities/user/User';
+import { User, UserGender } from '../../../domain/entities/user/User';
 
 const userSchema = new Schema<User>(
   {
@@ -10,20 +10,20 @@ const userSchema = new Schema<User>(
       required: true
     },
     phoneNumber: {
+      // 998909990099
       type: String,
       required: true
     },
-    verify: {
+    password: String, // hashed password
+    salt: String, // unique salt for password hashing
+    verified: {
       type: Boolean,
       default: false
-    },
-    password: {
-      type: String,
-      required: true,
-      select: false
-    },
-    salt: {
-      type: String
+    }, // if user verify account this field be ture
+    verificationCode: String, // verification code for verify user account. This field expires in 24h
+    avatar: String, // 128x128 avatar
+    gender: {
+      enum: Object.values(UserGender)
     }
   },
   {

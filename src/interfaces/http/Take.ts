@@ -12,8 +12,8 @@ export class Take<T> {
   body(key?: string): T {
     return key ? this.request.body[key] : this.request.body;
   }
-  query(key?: string): T {
-    return key ? this.request.query[key] : this.request.body;
+  query(key?: string) {
+    return key ? this.request.query[key] : this.request.query;
   }
   params(key?: string) {
     return key ? this.request.params[key] : this.request.params;
