@@ -1,3 +1,8 @@
+export enum UserGender {
+  MALE = 'male',
+  FMALE = 'fmale'
+}
+
 export type User = {
   id: string;
   firstName: string;
@@ -6,7 +11,10 @@ export type User = {
   phoneNumber: string;
   createdAt: Date;
   updatedAt: Date;
-  verify: boolean;
+  verified: boolean;
+  verificationCode: string;
+  avatar: string;
   password: string;
   salt: string;
+  gender: UserGender;
 };
