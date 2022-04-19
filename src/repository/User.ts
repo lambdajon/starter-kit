@@ -8,7 +8,14 @@ export class UserRepository {
   }
 
   async update(dataSource, params) {
-    const record = await User.findOneAndUpdate({ id: params.userId }, dataSource, { new: true });
+    const record = await User.findOneAndUpdate({ _id: params.userId }, dataSource, { new: true });
+    record.password = null
+    return record;
+  }
+
+  async delete(params) {
+    const record = await User.findOneAndDelete({ _id: params.userId });
+    record.password = null
     return record;
   }
 }

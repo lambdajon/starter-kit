@@ -31,7 +31,10 @@ export class UpdateUser extends HttpRegular {
             }
 
             const result = await this.useCase.act(user, { userId: params.userId });
-            this.created(res, result);
+            if (!result) {
+                return this.notFound(res, "There is no such user!")
+            }
+            this.ok(res, result);
         } catch (e) {
             console.log(e);
         }
