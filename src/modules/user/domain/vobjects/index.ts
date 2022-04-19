@@ -14,3 +14,7 @@ export type UpdateUser = {
   email: string;
   phoneNumber: string;
 };
+
+export type DeleteUser = {
+  userId: number;
+};

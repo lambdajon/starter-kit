@@ -22,4 +22,10 @@ const updateUserSchama = {
   })
 };
 
-export { createUserSchama, updateUserSchama };
+const deleteUserSchama = {
+  params: Joi.object({
+    userId: Joi.string().required(),
+  })
+};
+
+export { createUserSchama, updateUserSchama, deleteUserSchama };
