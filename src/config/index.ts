@@ -1,10 +1,11 @@
 import dotEnv from 'dotenv';
+import path from 'path';
 import { ConfigurationOptions } from './configurationOptions';
 
 if (process.env.NODE_ENV === 'test') {
   dotEnv.config({ path: '../../.env.test' });
 }
-dotEnv.config();
+dotEnv.config({ path: path.join(process.cwd(), '.env') });
 
 const configuration: ConfigurationOptions = {
   application: {
@@ -15,7 +16,7 @@ const configuration: ConfigurationOptions = {
   mongodb: {
     auth: process.env.MONGODB_PASSWORD && process.env.MONGODB_USER ? true : false,
     port: +process.env.MONGODB_PORT || 27017,
-    user: process.env.MONwGODB_USER,
+    user: process.env.MONGODB_USER,
     password: process.env.MONGODB_PASSWORD,
     database: process.env.MONGODB_DATABASE,
     host: process.env.MONGODB_HOST || 'localhost'

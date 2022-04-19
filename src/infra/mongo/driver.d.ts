@@ -1,8 +1,8 @@
 import { Database } from '../../core/Drivers';
-import { Application } from '../../core/InjectableDependancies';
+import { AwlixContainer } from '../../core/InjectableDependancies';
 declare class MongoDriver implements Database {
   private url: string;
-  constructor(options: Application);
+  constructor(options: AwlixContainer);
   connect(): Promise<void>;
 }
 

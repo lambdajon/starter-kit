@@ -7,7 +7,7 @@ export class MongodbDriver implements Database {
   constructor({ config }) {
     const options: MongoDriverOptions = config.mongodb;
     if (options.auth) {
-      this.url = `mongodb://${options.host}${options.user}:$${options.password}@${options.host}:${options.port}/${options.database}`;
+      this.url = `mongodb://${options.user}:${options.password}@${options.host}:${options.port}/${options.database}`;
     }
     this.url = `mongodb://${options.host}:${options.port}/${options.database}`;
   }
