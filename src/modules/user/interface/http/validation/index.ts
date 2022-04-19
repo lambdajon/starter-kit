@@ -18,14 +18,20 @@ const updateUserSchama = {
     phoneNumber: Joi.string(),
   }),
   params: Joi.object({
-    userId: Joi.string().required(),
+    userId: Joi.string().regex(/^[a-f\d]{24}$/i).required(),
   })
 };
 
 const deleteUserSchama = {
   params: Joi.object({
-    userId: Joi.string().required(),
+    userId: Joi.string().regex(/^[a-f\d]{24}$/i).required(),
   })
 };
 
-export { createUserSchama, updateUserSchama, deleteUserSchama };
+const getUserSchama = {
+  params: Joi.object({
+    userId: Joi.string().regex(/^[a-f\d]{24}$/i).required(),
+  })
+};
+
+export { createUserSchama, updateUserSchama, deleteUserSchama, getUserSchama };

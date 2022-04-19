@@ -23,4 +23,9 @@ export class UserRepository {
     const record = await User.find({}, { password: 0 });
     return record;
   }
+
+  async getOne(param) {
+    const record = await User.findOne({ _id: param.userId }, { password: 0 });
+    return record;
+  }
 }
