@@ -6,3 +6,11 @@ export type CreateUser = {
   verify: boolean;
   password: string;
 };
+
+export type UpdateUser = {
+  userId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+};
