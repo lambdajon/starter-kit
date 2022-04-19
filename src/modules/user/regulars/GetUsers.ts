@@ -14,7 +14,7 @@ export class GetUsers extends HttpRegular {
     async actImpl(req: DecodedRequest, res: Response) {
         try {
             const result = await this.useCase.act();
-            this.ok(res, result);
+            this.ok(res, result || []);
         } catch (e) {
             console.log(e);
         }
