@@ -18,4 +18,9 @@ export class UserRepository {
     record.password = null
     return record;
   }
+
+  async getMany() {
+    const record = await User.find({}, { password: 0 });
+    return record;
+  }
 }
