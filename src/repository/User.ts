@@ -8,7 +8,7 @@ export class UserRepository {
   }
 
   async update(dataSource, id): Promise<void> {
-    const updateResult = await User.updateOne({ id: id }, dataSource );
+    const updateResult = await User.updateOne({ id: id }, dataSource);
     if (updateResult.modifiedCount === 0) {
       throw new Error('User not found');
     }
