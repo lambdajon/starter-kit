@@ -43,7 +43,7 @@
     "husky": "^8.0.1",
     "jest": "^28.1.0",
     "jest-extended": "^2.0.0",
-    "nodemon": "^2.0.16",
+    "nodemon": "^2.0.20",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.0",
     "source-map-support": "^0.5.20",
